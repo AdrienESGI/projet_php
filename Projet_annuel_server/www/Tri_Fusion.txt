@@ -1,0 +1,96 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+#include <string.h>
+
+
+void printTableau(int tab[], int n){
+        for (int i = 0; i < n; i++)
+            printf("%d ", tab[i]);
+        printf("\n");
+}
+
+int kmax(int ndata){
+    int k = 0;
+    while( ndata > 1 ){
+        ndata = ndata / 2;
+        k++;
+    }
+    return k;
+}
+
+int jmax(int ndata, int k){
+    return ndata / pow (2,k+1);
+}
+
+int Imax(int k){
+    return pow (2,k+1) -1;
+}
+
+int offset (int j, int k){
+    return j * pow (2,k+1);
+}
+
+
+void fusion(int data[],int ndata){
+    int* dataI[2];
+    dataI[0] = (int*)malloc(ndata * sizeof(int));
+    dataI[1] = (int*)malloc(ndata * sizeof(int));
+
+    memcpy(dataI[0], data, ndata * sizeof (int));
+    memcpy(dataI[1], data, ndata * sizeof (int));
+    //printf("DataG, DataD %d %d\n", dataI[0][1], dataI[1][7]);
+    int k, j ,i, g , d;
+
+
+    for(k=0; k < kmax(ndata); k++){
+            printTableau(dataI[k%2],ndata);
+            printTableau(dataI[(k+1)%2],ndata);
+        for(j=0; j < jmax(ndata, k); j++ ){
+                g = (j * 2)* pow(2,k);
+                d = g + pow(2,k);
+            for(i=0; i < Imax(k); i++){
+                    printf("");// 6 = 7-1 le dernier s'impose, donc pas de comparaison
+                if((g <= 3) && (d <= 7)){
+                    if(dataI[k%2][g]<dataI[k%2][d]){
+                        dataI[(k+1)%2][i] = dataI[k%2][g];
+                        if(i == 6){
+                             dataI[(k+1)%2][i+1] = dataI[k%2][d];
+                        }
+                        g++;
+                    }else{
+                        dataI[(k+1)%2][i] = dataI[k%2][d];
+                        if(i == 6){
+                            dataI[(k+1)%2][i+1] = dataI[k%2][g];
+                        }
+                        d++;
+                    }
+                }else{
+                    if(g > 3) {
+                        dataI[(k+1)%2][i] = dataI[k%2][d];
+                        d++;
+                    }
+                    if(d > 7){
+                        dataI[(k+1)%2][i] = dataI[k%2][g];
+                        g++;
+                    }
+                }
+            }
+        }
+    }
+
+
+
+    //printTableau(dataI[k%2],ndata);
+}
+
+
+int main(){
+    int data[] = {2, 1, 9, 8, 4, 3, 5, 7};
+    int ndata=8;
+
+    printTableau(data,ndata);
+    fusion(data,ndata);
+
+   return 0;
+}

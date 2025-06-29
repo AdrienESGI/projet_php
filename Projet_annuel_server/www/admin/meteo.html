@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" href="meteo.css">
+      <title>Meteo sensor on Webserver</title>
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+      <script type="text/javascript" src="meteograph.js" defer></script>
+    </head>
+    <script>
+      function MeteoReadings() {
+        $.ajax({
+          url: "/api/meteo/getCurrent",
+          method: "GET",
+          success: function (data) {
+            if (data.error != undefined) {
+              console.log(data.error);
+            } else {
+              document.getElementById("TempC").innerHTML = (data.TempC).toPrecision(4);
+              document.getElementById("Humi").innerHTML = (data.Humi).toPrecision(4);
+              document.getElementById("Press").innerHTML = (data.Press).toPrecision(4);
+              document.getElementById("Lumi").innerHTML = (data.Lumi).toPrecision(4);
+            }
+          }
+        });
+      }
+      setInterval(MeteoReadings, 3000);
+    </script>
+    <body>
+      <div Id="flexbox-container">
+        <div class="flexbox-item">
+          <table>
+            <tr>
+              <th>MEASUREMENT</th>
+              <th>VALUE</th>
+            </tr>
+            <tr>
+              <td>Temperature</td>
+              <td><span id="TempC">...</span> *C</td>
+            </tr>
+            <tr>
+              <td>Humidity</td>
+              <td><span id="Humi">...</span> %</td>
+            </tr>
+            <tr>
+              <td>Pressure</td>
+              <td><span id="Press">...</span> Pa</td>
+            </tr>
+            <tr>
+              <td>Luminosity</td>
+              <td><span id="Lumi">...</span> lumen</td>
+            </tr>
+          </table>
+
+        </div>
+
+        <div class="flexbox-item">
+           <canvas id="myChart" style="width:100%;max-width:300px"></canvas>
+        </div>
+
+        <div class="flexbox-item">
+          <h1>Consulting</h1>
+          <h3>In micro-electronics.</h3>
+          <strong>35 years of experience</strong> <br>in device, process integration, design, supply chain <br>
+          Specialized in optics, NVM, HV devices, MEMS; all silicon based <br>
+            <br><strong>Strong points:</strong>
+            <ul>
+              <li>Process transfers to 8 fabs</li>
+              <li>Process development including additional devices</li>
+              <li>Research resulting in 10 publications</li>
+              <li>Device/process Improvememts resulting in 10 patents</li>
+              <li>Consulting projects to help out customers 7 projects during last 13 years</li>
+            </ul><br>
+          <button onclick="showTekstBlok('SeeMore3')">See more</button>
+          <dialog id="SeeMore3" class="tekstblok">
+            <div class="tekstblok-header">
+              <h2>Consulting service SemiConsultor</h2>
+              <button type="button" onclick="closeTekstBlok('SeeMore3')" class="close-button">&times;</button>
+            </div>
+              <p>During the last 14 years multiple asignments have been realized:</p>
+              <p>* MEMS: blood analysis case holder, improve night vision light path on intensity</p>
+              <p>* Supplychain: improvement for image sensors, humidity sensors, embedded HV technolgy</p>
+              <p>* Technology setup: embedded NVM in 0.11micron CMOS process, getter process</p>
+              <p>* Yield improvement image sensors</p>
+              <p>* Technology transfer CMOS, HV NVM image sensors </p>
+              <p>* Test setup for different technologies</p>
+              <p>* Worked for or with many companies: Philips, Atmel, ams-Osram, Tronics, Carl Zeiss, etc.</p><br>
+                <br>Contact Semiconsultor for project discussion.
+              </p>  
+          </dialog>
+        </div>
+
+        <div class="flexbox-item">
+          <h1>Consulting</h1> 
+          <h3>Way of working</h3>
+          <strong>Flexibility</strong> <br>
+          The key word for contracts with all customers: flexibility.<br>
+            <br><strong>Examples:</strong>
+            <ul>
+              <li>Tempory replacement of employees (pragnancy /illness)</li>
+              <li>Lacking specific knowledge</li>
+              <li>Installing relationship with suppliers</li>
+              <li>Educating new recruits</li>
+              <li>Costomer secrets are protected by NDA</li>
+            </ul><br>
+          <button onclick="showTekstBlok('SeeMore4')">See more</button>
+          <dialog id="SeeMore4" class="tekstblok">
+            <div class="tekstblok-header">
+              <h2>About me</h2>
+              <button type="button" onclick="closeTekstBlok('SeeMore4')" class="close-button">&times;</button>
+            </div>
+            <ul>
+              <li>Interested in micro-electronics technology in every aspect from fundamental device physics, process, design test and supplychain</li>
+              <li>Result driven trying to find creative solutions with high quality in short time for encountered problems, implement these and evaluate the result</li>
+              <li>Working in teams sharing knowledge and discuss results to come to the best solution, as member or as team-leader</li>
+              <li>Having the Dutch nationality, living in France, speaking 4 languages, have been working in many countries in Europe, I feel myself an Europeen consultant ready to travel to my costomers.</li>
+            </ul>
+          </dialog>
+        </div>
+      </div>
+
+      <script>
+        function showTekstBlok(tekstBlokID){
+          const dialog = document.getElementById(tekstBlokID)
+          const doc = document
+          const width = document.body.width;
+          //alert(width)
+          //console.log(doc)
+          dialog.showModal();
+        }
+        function closeTekstBlok(tekstBlokID){
+          const dialog = document.getElementById(tekstBlokID)
+          dialog.close();
+        }
+      </script>
+    </body>
+</html>
