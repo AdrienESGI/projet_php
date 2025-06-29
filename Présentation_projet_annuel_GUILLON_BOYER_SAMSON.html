@@ -1,0 +1,697 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Présentation Projet Annuel</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray {
+	color: rgba(115, 114, 110, 1);
+	fill: rgba(115, 114, 110, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(205, 60, 58, 1);
+	fill: rgba(205, 60, 58, 1);
+}
+.highlight-default_background {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.highlight-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(115, 114, 110, 1);
+	fill: rgba(115, 114, 110, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(205, 60, 58, 1);
+	fill: rgba(205, 60, 58, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.block-color-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: undefined; }
+.select-value-color-pink { background-color: rgba(225, 136, 179, 0.27); }
+.select-value-color-purple { background-color: rgba(168, 129, 197, 0.27); }
+.select-value-color-green { background-color: rgba(123, 183, 129, 0.27); }
+.select-value-color-gray { background-color: rgba(84, 72, 49, 0.15); }
+.select-value-color-translucentGray { background-color: undefined; }
+.select-value-color-orange { background-color: rgba(224, 124, 57, 0.27); }
+.select-value-color-brown { background-color: rgba(210, 162, 141, 0.35); }
+.select-value-color-red { background-color: rgba(244, 171, 159, 0.4); }
+.select-value-color-yellow { background-color: rgba(236, 191, 66, 0.39); }
+.select-value-color-blue { background-color: rgba(93, 165, 206, 0.27); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="2115a18d-dec9-8002-8512-d556d371109c" class="page sans"><header><img class="page-cover-image" src="https://www.notion.so/images/page-cover/nasa_orion_nebula.jpg" style="object-position:center 0%"/><h1 class="page-title">Présentation Projet Annuel</h1><p class="page-description"></p></header><div class="page-body"><h3 id="2115a18d-dec9-808c-a424-d254e9005667" class=""><strong>PARTIE 1 – Site Web d’Aide à l’Alternance</strong></h3><h3 id="2115a18d-dec9-8012-bbda-e70c24357961" class="">1. Objectifs et public cible</h3><h3 id="2115a18d-dec9-8067-adfc-d0d8fcb5088c" class="">2. Fonctionnalités principales</h3><h3 id="2115a18d-dec9-8091-b782-fcb831d971ae" class="">3. Interface utilisateur</h3><h3 id="2115a18d-dec9-8020-a502-e79c9cb59111" class="">4. Structure technique</h3><h3 id="2115a18d-dec9-80ef-9408-d3c228f4862a" class=""><strong>PARTIE 2 – Serveur Web embarqué sur ESP32</strong></h3><h3 id="2115a18d-dec9-80f5-9f7a-ec0ae3cdcf75" class="">1. Objectif technique</h3><h3 id="2115a18d-dec9-80ce-86f3-fa337e6e89b4" class="">2. Composants matériels</h3><h3 id="2115a18d-dec9-8063-ae55-c271dd22e84a" class="">3. Organisation du code Arduino</h3><h3 id="2115a18d-dec9-80cb-ae15-c475aae1f742" class="">4. Limitations rencontrées</h3><h3 id="2115a18d-dec9-80d9-8af2-eb183bbd7b2f" class=""><strong>PARTIE 3 – Base de Données </strong><code><strong>alternance_it</strong></code></h3><h3 id="2115a18d-dec9-8089-9c88-dc81219d3739" class="">1. Objectif de la base</h3><h3 id="2115a18d-dec9-8029-bafb-eee08ce36355" class="">2. Schéma relationnel (ERD)</h3><h3 id="2115a18d-dec9-80f9-9219-f0cf7e037364" class="">3. Logique métier</h3><h3 id="2115a18d-dec9-8043-a7fd-d578624126f8" class="">4. Requêtes utiles (bonus)</h3><h2 id="2115a18d-dec9-8043-ad9e-e79cd8d4bc75" class="">PARTIE 4 – Synthèse, réflexion et mise en perspective</h2><h3 id="2115a18d-dec9-80a3-9c71-ceccf9f367a3" class="">1. Lien entre le site, le serveur embarqué et la base de données</h3><h3 id="2115a18d-dec9-8065-9082-cbd83828dc94" class="">2. Fonctionnalités résolutives et contributions concrètes</h3><h3 id="2115a18d-dec9-80a9-b53d-f74dee72f087" class="">3. Technologies utilisées</h3><h3 id="2115a18d-dec9-80bf-b91f-e0909733914a" class="">4. Problèmes rencontrés</h3><h3 id="2115a18d-dec9-805c-8ae4-fff4da239a33" class="">5. Ce que ce projet nous a apporté</h3><h2 id="2115a18d-dec9-8030-9fde-ca0b492b6dff" class="">PARTIE 5 – Conclusion générale</h2><p id="2115a18d-dec9-805d-9bf6-d959a5dbd26d" class="">
+</p><h2 id="2115a18d-dec9-804c-a62f-d0516b0f5c84" class="">PARTIE 1 – Site Web d’Aide à l’Alternance</h2><h3 id="2115a18d-dec9-804a-8638-c913a2e7c75e" class="">1. Objectifs et public cible</h3><p id="2115a18d-dec9-80bc-a8fd-f838f4941033" class="">Le site a été conçu pour répondre à un besoin récurrent chez les étudiants en informatique :</p><p id="2115a18d-dec9-80e9-8a03-d29f74bc5533" class="">trouver une alternance dans le secteur IT de manière efficace et personnalisée. L’objectif principal est d’aider les alternants à :</p><ul id="2115a18d-dec9-8017-9297-e7c7d77e3598" class="bulleted-list"><li style="list-style-type:disc">Créer un CV pertinent à l’aide d’un générateur automatisé</li></ul><ul id="2115a18d-dec9-80e4-a1dd-e1064d776550" class="bulleted-list"><li style="list-style-type:disc">Accéder à des offres ciblées et actualisées</li></ul><ul id="2115a18d-dec9-8014-a0d4-c735e0af6db6" class="bulleted-list"><li style="list-style-type:disc">Postuler en quelques clics</li></ul><ul id="2115a18d-dec9-80b9-b24e-f8836326c9ed" class="bulleted-list"><li style="list-style-type:disc">Suivre leur parcours et leurs compétences</li></ul><ul id="2115a18d-dec9-80cd-9887-f2bd90e94e5a" class="bulleted-list"><li style="list-style-type:disc">Profiter de ressources utiles pour préparer leur projet professionnel</li></ul><p id="2115a18d-dec9-804d-ba6a-cdcfd07fde0b" class="">Mais le site s’adresse également aux <strong>recruteurs</strong>. Ces derniers peuvent :</p><ul id="2115a18d-dec9-8052-b473-dc92a9dc1344" class="bulleted-list"><li style="list-style-type:disc">Déposer facilement des offres avec critères et compétences précises</li></ul><ul id="2115a18d-dec9-80e7-a3db-d6bd43ae9534" class="bulleted-list"><li style="list-style-type:disc">Accéder à une base de profils d’alternants engagés et en cours de formation</li></ul><ul id="2115a18d-dec9-80c6-b7a7-c79e793c96cc" class="bulleted-list"><li style="list-style-type:disc">Visualiser des CV formatés automatiquement selon les données réelles du profil</li></ul><ul id="2115a18d-dec9-8083-803a-e7e35383dd18" class="bulleted-list"><li style="list-style-type:disc">Communiquer avec les candidats via une messagerie intégrée</li></ul><p id="2115a18d-dec9-80e0-aca0-f8e44678dd3f" class=""><strong>Public cible :</strong></p><ul id="2115a18d-dec9-8000-9594-c1b510fceb02" class="bulleted-list"><li style="list-style-type:disc">Étudiants en informatique, en quête d’un contrat d’alternance, souvent en reconversion, en début de parcours ou avec peu de réseau professionnel</li></ul><ul id="2115a18d-dec9-80b2-b06f-e16cee549cd5" class="bulleted-list"><li style="list-style-type:disc">Recruteurs, RH et entreprises du secteur IT souhaitant trouver rapidement des profils motivés et adaptés à leurs besoins techniques</li></ul><hr id="2115a18d-dec9-808d-a844-f42a32397973"/><h3 id="2115a18d-dec9-80d7-8f17-fa510f802d37" class="">2. Fonctionnalités principales</h3><p id="2115a18d-dec9-8089-b531-f81a681229ac" class="">Le site s’articule autour de deux espaces : <strong>Candidat</strong> et <strong>Recruteur</strong>, accessibles après authentification. Voici les principales fonctionnalités offertes :</p><h3 id="2115a18d-dec9-80c1-891b-c6fbb4216a23" class="">Espace Candidat :</h3><ul id="2115a18d-dec9-804f-aa74-ef48a962d96a" class="bulleted-list"><li style="list-style-type:disc">Création de profil complet (ville, école, niveau, objectifs, lien LinkedIn/portfolio)</li></ul><ul id="2115a18d-dec9-80d6-89ce-c0bdc824347d" class="bulleted-list"><li style="list-style-type:disc">Génération de CV personnalisé au format PDF à partir des données saisies</li></ul><ul id="2115a18d-dec9-8029-aadb-ff5b3675abed" class="bulleted-list"><li style="list-style-type:disc">Consultation et recherche d’annonces d’alternance</li></ul><ul id="2115a18d-dec9-803b-8316-ce8311102885" class="bulleted-list"><li style="list-style-type:disc">Postulation directe aux offres</li></ul><ul id="2115a18d-dec9-8005-9615-c948dea1bb44" class="bulleted-list"><li style="list-style-type:disc">Suivi des candidatures envoyées</li></ul><ul id="2115a18d-dec9-80b6-a1fc-ff7759ae7138" class="bulleted-list"><li style="list-style-type:disc">Messagerie interne avec les recruteurs</li></ul><ul id="2115a18d-dec9-80dc-acd2-dd7e2854f218" class="bulleted-list"><li style="list-style-type:disc">Suivi et évaluation des compétences via une interface dédiée</li></ul><ul id="2115a18d-dec9-8043-8826-f17651aee07c" class="bulleted-list"><li style="list-style-type:disc">Ajout d’expériences professionnelles pour enrichir le CV</li></ul><h3 id="2115a18d-dec9-80c9-b543-c71923e2bf7d" class="">Espace Recruteur :</h3><ul id="2115a18d-dec9-8052-899e-eb5fd0de8ccc" class="bulleted-list"><li style="list-style-type:disc">Dépôt d’annonces avec description, titre et compétences recherchées</li></ul><ul id="2115a18d-dec9-80c5-98d1-f73901c7ac7e" class="bulleted-list"><li style="list-style-type:disc">Consultation des profils et des CV des candidats</li></ul><ul id="2115a18d-dec9-8098-a7e7-e6d6ddacb71f" class="bulleted-list"><li style="list-style-type:disc">Gestion des candidatures reçues</li></ul><ul id="2115a18d-dec9-80ab-aa93-d247a435bbb8" class="bulleted-list"><li style="list-style-type:disc">Messagerie pour échanger avec les candidats</li></ul><h3 id="2115a18d-dec9-80c6-86f5-df299c8da210" class="">Espace Administrateur :</h3><ul id="2115a18d-dec9-802e-9945-cb75d6ddece6" class="bulleted-list"><li style="list-style-type:disc">Gestion des utilisateurs (création, modification, suppression)</li></ul><ul id="2115a18d-dec9-804b-a081-f29ba8d055e6" class="bulleted-list"><li style="list-style-type:disc">Modération des annonces postées</li></ul><ul id="2115a18d-dec9-80d8-9868-e62249204f41" class="bulleted-list"><li style="list-style-type:disc">Supervision de l&#x27;activité générale (candidatures, échanges, publications)</li></ul><ul id="2115a18d-dec9-8060-becc-e3be7644500b" class="bulleted-list"><li style="list-style-type:disc">Accès aux données statistiques d’usage de la plateforme</li></ul><ul id="2115a18d-dec9-8018-aedb-e0b9912054b9" class="bulleted-list"><li style="list-style-type:disc">Maintenance des compétences proposées pour les annonces et les profils</li></ul><h3 id="2115a18d-dec9-80c2-91a6-ec57803d1a49" class="">Autres fonctionnalités :</h3><ul id="2115a18d-dec9-8085-9fb9-d82b7ac6b440" class="bulleted-list"><li style="list-style-type:disc">Page d’accueil avec présentation du projet</li></ul><ul id="2115a18d-dec9-80cc-af9e-e857281583cf" class="bulleted-list"><li style="list-style-type:disc">Page de contact</li></ul><ul id="2115a18d-dec9-8090-8ddf-df0c014f0585" class="bulleted-list"><li style="list-style-type:disc">Accès à des ressources : conseils CV, préparation à l’entretien, suivi de progression</li></ul><hr id="2115a18d-dec9-80fd-ba0e-dcec04bd909f"/><h3 id="2115a18d-dec9-80cc-9434-c8e3aca0d38d" class="">3. Interface utilisateur</h3><p id="2115a18d-dec9-802d-81c2-d6ea38b98605" class="">Le design a été pensé pour être <strong>simple, moderne, lisible et responsive</strong>.</p><ul id="2115a18d-dec9-8027-9ecb-e0286816ac2f" class="bulleted-list"><li style="list-style-type:disc">Utilisation de la police <em>Poppins</em> pour une lecture fluide</li></ul><ul id="2115a18d-dec9-80f5-9615-d626d63ff4f2" class="bulleted-list"><li style="list-style-type:disc">Palette de couleurs centrée autour de tons verts et bleus (apaisants et professionnels)</li></ul><ul id="2115a18d-dec9-8081-ac31-d659ae6b404d" class="bulleted-list"><li style="list-style-type:disc">Sidebar latérale pour la navigation (fixe sur desktop, adaptative sur mobile)</li></ul><ul id="2115a18d-dec9-8043-a990-c4f922dbdbd8" class="bulleted-list"><li style="list-style-type:disc">Zones principales : contenu centré, encadré, avec des boîtes thématiques (profil, projets, formulaire...)</li></ul><ul id="2115a18d-dec9-8057-aefc-ff65a13536bb" class="bulleted-list"><li style="list-style-type:disc">Interface formulaire ergonomique et accessible</li></ul><ul id="2115a18d-dec9-80d9-8244-d2409a77fdd1" class="bulleted-list"><li style="list-style-type:disc">Mise en avant des boutons d&#x27;action (postuler, contacter, télécharger CV...)</li></ul><p id="2115a18d-dec9-80ad-933b-c9aea1f5bbb1" class="">L’interface s’adapte aux différents formats d’écrans, rendant l’outil utilisable aussi bien sur desktop que mobile.</p><hr id="2115a18d-dec9-8065-aad3-d42a1ca97ac3"/><h3 id="2115a18d-dec9-80a9-80be-ccbdb04c718a" class="">4. Structure technique du site</h3><p id="2115a18d-dec9-8064-8e2b-ff27ee47ef2e" class="">Le site est structuré autour de <strong>fichiers PHP modulaires</strong> qui gèrent les différentes pages et logiques du site :</p><ul id="2115a18d-dec9-800d-ac44-e26d3b5b7442" class="bulleted-list"><li style="list-style-type:disc"><code>index.php</code> : page d’accueil</li></ul><ul id="2115a18d-dec9-8095-a76b-c45c29068aa0" class="bulleted-list"><li style="list-style-type:disc"><code>login.php</code>, <code>logout.php</code>, <code>register.php</code> : gestion des sessions utilisateurs</li></ul><ul id="2115a18d-dec9-80db-97fb-d04d00cc6160" class="bulleted-list"><li style="list-style-type:disc"><code>profil.php</code>, <code>dashboard.php</code> : espace personnel candidat</li></ul><ul id="2115a18d-dec9-8039-a7f7-d1675aa25f09" class="bulleted-list"><li style="list-style-type:disc"><code>creer_cv.php</code>, <code>generate_cv.php</code>, <code>cv.php</code> : gestion du CV et génération PDF via TCPDF</li></ul><ul id="2115a18d-dec9-803d-a9f5-c965776424d3" class="bulleted-list"><li style="list-style-type:disc"><code>offres.php</code>, <code>annonces.php</code>, <code>postuler.php</code> : affichage des offres et interaction avec les recruteurs</li></ul><ul id="2115a18d-dec9-8095-b0f8-dcc2e535d618" class="bulleted-list"><li style="list-style-type:disc"><code>candidatures.php</code> : suivi des candidatures</li></ul><ul id="2115a18d-dec9-805a-aabe-c8d15d206ada" class="bulleted-list"><li style="list-style-type:disc"><code>competences.php</code>, <code>suivi_competences.php</code> : interface de suivi des compétences</li></ul><ul id="2115a18d-dec9-8004-a73e-cc53e26d9a4a" class="bulleted-list"><li style="list-style-type:disc"><code>messages.php</code> : messagerie interne</li></ul><ul id="2115a18d-dec9-8010-8b48-ed5999051c47" class="bulleted-list"><li style="list-style-type:disc"><code>ressources.php</code>, <code>contact.php</code> : ressources et communication</li></ul><p id="2115a18d-dec9-80af-8c62-c4d9a3fb6b33" class="">Le style est géré par un fichier CSS principal (<code>style.css</code>) avec des classes spécifiques pour chaque zone fonctionnelle.</p><p id="2115a18d-dec9-8024-b939-ee7d966dc57f" class="">L’ensemble du site repose sur une base de données MySQL nommée <code>alternance_it</code>, interfacée via PHP natif sans framework, pour une meilleure maîtrise pédagogique du code.</p><h2 id="2115a18d-dec9-8058-ad42-fc42a1d87782" class="">PARTIE 2 – Serveur Web embarqué ESP32</h2><h3 id="2115a18d-dec9-806a-a290-e3483ddd88b1" class="">1. Objectif technique</h3><p id="2115a18d-dec9-80b7-a9a9-cda8258d1967" class="">Créer un serveur web miniature autonome fonctionnant sur un microcontrôleur <strong>ESP32 WROVER</strong>, capable de :</p><ul id="2115a18d-dec9-80c5-aa38-d8ba8f96093d" class="bulleted-list"><li style="list-style-type:disc">Fournir une interface web accessible localement (sans Internet)</li></ul><ul id="2115a18d-dec9-80fb-aaa9-da33b9065b72" class="bulleted-list"><li style="list-style-type:disc">Gérer l’hébergement de pages HTML/CSS/JS</li></ul><ul id="2115a18d-dec9-80f1-a0e2-caac818179f6" class="bulleted-list"><li style="list-style-type:disc">Permettre l’envoi, la suppression et la gestion de fichiers via une <strong>carte SD</strong></li></ul><ul id="2115a18d-dec9-804b-8b12-d2b42f019abc" class="bulleted-list"><li style="list-style-type:disc">Protéger l’accès grâce à un <strong>système d’authentification sécurisé</strong> basé sur des cookies et un hash SHA-256</li></ul><ul id="2115a18d-dec9-800c-91dd-ec6e690c22f9" class="bulleted-list"><li style="list-style-type:disc">Communiquer via une <strong>API REST</strong> locale</li></ul><p id="2115a18d-dec9-8057-822d-ef79220f27d6" class="">Ce serveur est conçu pour un usage personnel, pédagogique ou de prototypage, sans dépendre d’un hébergement externe.</p><hr id="2115a18d-dec9-801f-a19c-eec4543bf18e"/><h3 id="2115a18d-dec9-8020-8b80-e1ee7ca18128" class="">2. Composants matériels</h3><ul id="2115a18d-dec9-804e-8175-ede8f935a10a" class="bulleted-list"><li style="list-style-type:disc"><strong>ESP32 WROVER</strong> : microcontrôleur WiFi/Bluetooth avec mémoire étendue</li></ul><ul id="2115a18d-dec9-8040-8339-e390630df457" class="bulleted-list"><li style="list-style-type:disc"><strong>Carte microSD</strong> : stockage des fichiers hébergés, format FAT32 jusqu’à 32 Go</li></ul><ul id="2115a18d-dec9-8074-95fd-df4fc06ec3f8" class="bulleted-list"><li style="list-style-type:disc"><strong>Alimentation 5V 1A</strong> : alimentation standard micro-USB</li></ul><ul id="2115a18d-dec9-809c-8f10-f09331600203" class="bulleted-list"><li style="list-style-type:disc"><strong>Accès WiFi local</strong> : via point d’accès ESP32 ou réseau domestique</li></ul><hr id="2115a18d-dec9-800c-84a4-e9382d163c13"/><h3 id="2115a18d-dec9-80e3-a038-c84d82b1cbcd" class="">3. Architecture logicielle (Arduino)</h3><p id="2115a18d-dec9-806e-859c-d4681f494afc" class="">Le projet est découpé en fichiers <code>.ino</code> spécialisés pour garder une structure modulaire et maintenable :</p><ul id="2115a18d-dec9-8033-9fb2-d0beee6600ef" class="bulleted-list"><li style="list-style-type:disc"><code>web-server.ino</code> : point d’entrée du projet, initialise WiFi, carte SD, base utilisateurs, démarre le serveur</li></ul><ul id="2115a18d-dec9-806b-b045-cabe14a7bb3b" class="bulleted-list"><li style="list-style-type:disc"><code>server.ino</code> : déclaration du serveur HTTP via <code>ESPAsyncWebServer</code></li></ul><ul id="2115a18d-dec9-809d-a21a-ece98ede7504" class="bulleted-list"><li style="list-style-type:disc"><code>router.ino</code> : définition des routes HTTP (<code>/</code>, <code>/api</code>, <code>/upload</code>, etc.)</li></ul><ul id="2115a18d-dec9-80c8-b011-e82e75ce378a" class="bulleted-list"><li style="list-style-type:disc"><code>api.ino</code> : gestion de l’authentification (login, logout, vérification de session), API REST en JSON</li></ul><ul id="2115a18d-dec9-8027-9beb-db23a555aa83" class="bulleted-list"><li style="list-style-type:disc"><code>upload.ino</code> : gestion de l’envoi de fichiers depuis un formulaire web</li></ul><ul id="2115a18d-dec9-8038-8bfe-d41654620714" class="bulleted-list"><li style="list-style-type:disc"><code>kvdb.ino</code> : base de données clé/valeur rudimentaire pour stocker les utilisateurs</li></ul><ul id="2115a18d-dec9-80ac-8f9f-eb5c0a69b4f3" class="bulleted-list"><li style="list-style-type:disc"><code>internal.ino</code>, <code>utils.ino</code> : fonctions utilitaires (conversion taille, format fichiers, gestion des chemins...)</li></ul><hr id="2115a18d-dec9-803b-8a22-d8b481bfa31a"/><h3 id="2115a18d-dec9-8013-a161-d2e920f5420a" class="">4. Fonctionnalités du serveur</h3><ul id="2115a18d-dec9-80f2-87c3-e390cf4a4db2" class="bulleted-list"><li style="list-style-type:disc"><strong>Hébergement de fichiers HTML/CSS/JS</strong> stockés sur carte SD</li></ul><ul id="2115a18d-dec9-8036-a619-c7fa566e08c2" class="bulleted-list"><li style="list-style-type:disc"><strong>Explorateur de fichiers web</strong> : interface avec options de téléversement, renommage, suppression</li></ul><ul id="2115a18d-dec9-803c-a304-ffcd42554698" class="bulleted-list"><li style="list-style-type:disc"><strong>Authentification sécurisée</strong> : mot de passe stocké en SHA-256 + gestion de session via cookies HTTP</li></ul><ul id="2115a18d-dec9-800f-b4e6-f7d3985c3804" class="bulleted-list"><li style="list-style-type:disc"><strong>API REST</strong> : envoie et réception de requêtes JSON pour interagir avec les fichiers ou sessions</li></ul><ul id="2115a18d-dec9-80b6-b6ec-cbfa92bf434c" class="bulleted-list"><li style="list-style-type:disc"><strong>Interface admin</strong> avec navigation à onglets, mise à jour asynchrone</li></ul><hr id="2115a18d-dec9-801c-856b-c4905c9b8c80"/><h3 id="2115a18d-dec9-8088-827c-fab68884fd8e" class="">5. Problèmes rencontrés et solutions</h3><ul id="2115a18d-dec9-80e0-b9fc-c18bd4ed9e29" class="bulleted-list"><li style="list-style-type:disc"><strong>HTTPS instable</strong> : limitations de l’ESP32 sur le SSL → usage local recommandé</li></ul><ul id="2115a18d-dec9-8083-8063-f8bdbd1f81cb" class="bulleted-list"><li style="list-style-type:disc"><strong>Cookies parfois bloqués par Firefox</strong> : ajout d’en-têtes supplémentaires pour contourner les restrictions</li></ul><ul id="2115a18d-dec9-8048-bbb5-c7a1447e0543" class="bulleted-list"><li style="list-style-type:disc"><strong>Gestion multipart</strong> complexe : solution personnalisée pour découper et réassembler les fichiers uploadés</li></ul><ul id="2115a18d-dec9-8070-b28c-cb46a648e9a7" class="bulleted-list"><li style="list-style-type:disc"><strong>Limitations dynamiques de l’ESP32</strong> : usage optimisé du buffer et chargement progressif</li></ul><hr id="2115a18d-dec9-8074-bc0e-d409c1e14045"/><h3 id="2115a18d-dec9-8046-9000-f0287f490a01" class="">6. Résultat obtenu</h3><ul id="2115a18d-dec9-80d4-a414-c338d27d2b1f" class="bulleted-list"><li style="list-style-type:disc">Serveur local autonome, <strong>entièrement fonctionnel</strong> et rapide</li></ul><ul id="2115a18d-dec9-8036-8913-da168b263deb" class="bulleted-list"><li style="list-style-type:disc">Authentification robuste et session utilisateur active</li></ul><ul id="2115a18d-dec9-8054-beb2-e057bda96d16" class="bulleted-list"><li style="list-style-type:disc">API REST testée sur navigateur (JSON preview)</li></ul><ul id="2115a18d-dec9-803c-9df4-e255703a50e1" class="bulleted-list"><li style="list-style-type:disc">Interface web fluide, ergonomique et compatible mobile</li></ul><h2 id="2115a18d-dec9-8069-b983-e860c81614db" class="">PARTIE 3 – Base de Données <code>alternance_it</code></h2><h3 id="2115a18d-dec9-8012-8ba1-d1e83284b6d5" class="">1. Objectifs de la base</h3><p id="2115a18d-dec9-80f1-86b2-c427f9773ba1" class="">La base de données MySQL <code>alternance_it</code> permet de gérer toutes les interactions entre les utilisateurs, les offres, les compétences et les candidatures. Elle soutient à la fois les espaces <strong>candidat</strong> et <strong>recruteur</strong>, tout en permettant la génération dynamique de CV et le suivi des parcours.</p><hr id="2115a18d-dec9-80dc-8ce3-d52a5513bcda"/><h3 id="2115a18d-dec9-80ad-a4c1-d6dd917d4e20" class="">2. Schéma relationnel (structure)</h3><h3 id="2115a18d-dec9-8018-ab23-caa35339f733" class="">Tables principales :</h3><ul id="2115a18d-dec9-80ad-93d8-c17e991e33b6" class="bulleted-list"><li style="list-style-type:disc"><code>utilisateurs</code> : contient les données de connexion et le rôle (candidat, recruteur, admin)</li></ul><ul id="2115a18d-dec9-8057-8ec4-eac78e88e87a" class="bulleted-list"><li style="list-style-type:disc"><code>profil_utilisateur</code> : informations détaillées (ville, école, objectifs, liens...)</li></ul><ul id="2115a18d-dec9-80d4-b252-c24e865f83c7" class="bulleted-list"><li style="list-style-type:disc"><code>annonces</code> : offres d’alternance publiées par les recruteurs</li></ul><ul id="2115a18d-dec9-803c-80e0-db7c25fd4cb8" class="bulleted-list"><li style="list-style-type:disc"><code>candidatures</code> : lien entre utilisateurs et annonces (avec statut de suivi)</li></ul><ul id="2115a18d-dec9-8076-b44a-fbdb088b4e19" class="bulleted-list"><li style="list-style-type:disc"><code>competences</code> : compétences disponibles dans la plateforme (catégories, libellé)</li></ul><ul id="2115a18d-dec9-8035-8101-e8a727b8f332" class="bulleted-list"><li style="list-style-type:disc"><code>utilisateurs_competences</code> : association entre utilisateur et compétences avec niveau</li></ul><ul id="2115a18d-dec9-80ff-b571-f88b3e47fdbd" class="bulleted-list"><li style="list-style-type:disc"><code>annonces_competences</code> : compétences requises pour chaque offre</li></ul><ul id="2115a18d-dec9-80cf-b300-d734bc87570d" class="bulleted-list"><li style="list-style-type:disc"><code>experiences_professionnelles</code> : expériences renseignées pour enrichir le CV</li></ul><ul id="2115a18d-dec9-809a-8446-cb8ae0176f67" class="bulleted-list"><li style="list-style-type:disc"><code>messages</code> : échanges internes entre utilisateurs</li></ul><hr id="2115a18d-dec9-80b5-b1c3-db81a55df65b"/><h3 id="2115a18d-dec9-8053-b165-fd481f87034f" class="">3. Logique métier et interactions</h3><p id="2115a18d-dec9-80a2-9e39-fc690655257e" class="">La base est conçue pour permettre une logique métier riche :</p><ul id="2115a18d-dec9-8042-b38e-d26b2270040a" class="bulleted-list"><li style="list-style-type:disc">Requêtes de type &quot;matching&quot; : croisement entre compétences d’un utilisateur et exigences des annonces</li></ul><ul id="2115a18d-dec9-80ad-8396-f7b51bd70100" class="bulleted-list"><li style="list-style-type:disc">Génération dynamique du CV à partir de : profil, expériences, compétences sélectionnées</li></ul><ul id="2115a18d-dec9-8008-ba0b-e592b1252eb0" class="bulleted-list"><li style="list-style-type:disc">Filtrage intelligent des offres selon le profil</li></ul><ul id="2115a18d-dec9-80dc-a14b-ecdcc352af37" class="bulleted-list"><li style="list-style-type:disc">Suivi du niveau d’acquisition des compétences avec évaluation</li></ul><ul id="2115a18d-dec9-8072-8ee5-c20373ac7d87" class="bulleted-list"><li style="list-style-type:disc">Possibilité pour les recruteurs de trier les candidats selon les compétences clés</li></ul><hr id="2115a18d-dec9-80e2-8dff-fb4098eda98b"/><h3 id="2115a18d-dec9-8022-9666-cf5e02fc2a40" class="">4. Requêtes SQL utiles (exemples)</h3><ul id="2115a18d-dec9-80b8-b79d-c32e10ac523e" class="bulleted-list"><li style="list-style-type:disc"><strong>Afficher les offres compatibles avec les compétences d’un candidat :</strong></li></ul><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="2115a18d-dec9-80fe-bd7a-e9414ef1f402" class="code"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">SELECT a.* FROM annonces a
+JOIN annonces_competences ac ON a.id = ac.annonce_id
+JOIN utilisateurs_competences uc ON ac.competence_id = uc.competence_id
+WHERE uc.utilisateur_id = :id_utilisateur
+GROUP BY a.id;</code></pre><ul id="2115a18d-dec9-80db-bfa2-fc9b58391fb4" class="bulleted-list"><li style="list-style-type:disc"><strong>Lister les candidatures envoyées par un utilisateur :</strong></li></ul><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="2115a18d-dec9-8081-964b-d1b3ec316ec6" class="code"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">SELECT a.titre, c.date_postulation, c.statut
+FROM candidatures c
+JOIN annonces a ON c.annonce_id = a.id
+WHERE c.utilisateur_id = :id_utilisateur;</code></pre><ul id="2115a18d-dec9-8042-a39d-f66f113e4d04" class="bulleted-list"><li style="list-style-type:disc"><strong>Afficher le profil complet d’un utilisateur pour le CV :</strong></li></ul><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="2115a18d-dec9-80a0-849e-e63a493cb519" class="code"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">SELECT u.nom, u.email, p.ville, p.ecole, e.intitule, e.description, c.libelle
+FROM utilisateurs u
+JOIN profil_utilisateur p ON u.id = p.utilisateur_id
+LEFT JOIN experiences_professionnelles e ON u.id = e.utilisateur_id
+LEFT JOIN utilisateurs_competences uc ON u.id = uc.utilisateur_id
+LEFT JOIN competences c ON uc.competence_id = c.id
+WHERE u.id = :id_utilisateur;</code></pre><hr id="2115a18d-dec9-80ea-9f5a-e18812c083fe"/><h3 id="2115a18d-dec9-8012-9dbf-f87eb4ed6efa" class="">5. Résumé</h3><p id="2115a18d-dec9-8057-a7bb-d6383265aef6" class="">La base <code>alternance_it</code> constitue la <strong>colonne vertébrale du projet</strong>. Elle permet non seulement de stocker les données des utilisateurs, mais aussi d’offrir une logique d’interaction riche et évolutive : adaptation des offres, génération de CV, suivi des progrès. Sa structure relationnelle rend le système robuste, évolutif, et prêt à être intégré dans une application à plus grande échelle.</p><h2 id="2115a18d-dec9-80aa-ab00-f423684625ab" class="">PARTIE 4 – Synthèse, réflexion et mise en perspective</h2><h3 id="2115a18d-dec9-80d2-9aec-ce7234cece49" class="">1. Lien entre le site, le serveur embarqué et la base de données</h3><p id="2115a18d-dec9-805e-9bee-c6052cff5775" class="">Le projet dans sa globalité a été pensé comme une solution <strong>cohérente, modulaire et interconnectée</strong>, répondant à une problématique concrète : <strong>accompagner les étudiants en informatique dans leur recherche d’alternance</strong>.</p><ul id="2115a18d-dec9-8025-9997-f0a1bc10378f" class="bulleted-list"><li style="list-style-type:disc">Le <strong>site web</strong> est la façade visible de la plateforme, proposant aux utilisateurs une interface complète pour consulter, postuler et suivre des offres d’alternance, tout en construisant leur identité professionnelle.</li></ul><ul id="2115a18d-dec9-80e7-b2b5-e65b4549dcdd" class="bulleted-list"><li style="list-style-type:disc">La <strong>base de données</strong> <code>alternance_it</code> est le socle qui rend possible l’intelligence fonctionnelle du site : elle permet la personnalisation, le suivi des candidatures, la correspondance profil/offre, et la gestion du parcours utilisateur.</li></ul><ul id="2115a18d-dec9-8021-beb5-c884cf2f084f" class="bulleted-list"><li style="list-style-type:disc">Le <strong>serveur ESP32</strong> incarne quant à lui une approche complémentaire : il démontre la possibilité de proposer un hébergement local autonome et sécurisé, utile en cas de déploiement sur des réseaux fermés, en atelier pédagogique, ou en environnement contraint (pas d’accès internet, faible consommation).</li></ul><p id="2115a18d-dec9-8037-bf05-e9871128b279" class="">L’intégration de ces éléments permet d’imaginer des usages avancés :</p><ul id="2115a18d-dec9-802e-9342-cc56bcedce9d" class="bulleted-list"><li style="list-style-type:disc">Utilisation du serveur ESP32 comme <strong>outil de secours pédagogique</strong> pour les étudiants en cas de coupure réseau.</li></ul><ul id="2115a18d-dec9-8042-a0ba-de0452701d7c" class="bulleted-list"><li style="list-style-type:disc">Déploiement local sur une borne WiFi autonome pour des salons ou ateliers de formation.</li></ul><ul id="2115a18d-dec9-8043-be14-ea8e65ba5d64" class="bulleted-list"><li style="list-style-type:disc">Sauvegarde temporaire ou transfert sécurisé de CV et profils via carte SD.</li></ul><hr id="2115a18d-dec9-8038-af4e-dc8886097132"/><h3 id="2115a18d-dec9-801e-afd9-f87142bddd02" class="">2. Fonctionnalités résolutives et contributions concrètes</h3><p id="2115a18d-dec9-80e0-8d9f-f2532165e16d" class="">Voici quelques exemples de problèmes concrets adressés par la solution :</p><ul id="2115a18d-dec9-80b7-9642-fa63c75bfe63" class="bulleted-list"><li style="list-style-type:disc"><strong>Manque d’outils pour créer un CV pertinent sans compétences avancées en bureautique</strong> → Résolu via la génération automatique de CV PDF.</li></ul><ul id="2115a18d-dec9-8019-a68f-deb396cf78de" class="bulleted-list"><li style="list-style-type:disc"><strong>Difficulté à cibler des offres correspondant à son profil</strong> → Résolu par le filtrage intelligent basé sur les compétences stockées en base.</li></ul><ul id="2115a18d-dec9-803a-8fe1-f1c1f2151d6a" class="bulleted-list"><li style="list-style-type:disc"><strong>Suivi de progression personnel inexistant</strong> → Suivi des compétences et expériences enrichissantes via interface dédiée.</li></ul><ul id="2115a18d-dec9-8073-a6da-ff610485d12c" class="bulleted-list"><li style="list-style-type:disc"><strong>Risque de coupure réseau ou besoin de déploiement temporaire</strong> → Contourné grâce à l’ESP32 et au serveur web local embarqué.</li></ul><p id="2115a18d-dec9-803d-849a-cecc80ddcb38" class="">Le projet apporte donc une <strong>solution pragmatique, hybride et pédagogique</strong>, s’appuyant sur des technologies open source et du matériel accessible.</p><hr id="2115a18d-dec9-807e-8dd8-f1aeb4baf76b"/><h3 id="2115a18d-dec9-802a-9030-c7bcede06309" class="">3. Technologies utilisées</h3><ul id="2115a18d-dec9-80c6-bb34-ce47080009bf" class="bulleted-list"><li style="list-style-type:disc"><strong>Frontend :</strong> HTML5, CSS3 (design responsive), JS natif</li></ul><ul id="2115a18d-dec9-80ca-a3db-fa5cb471433f" class="bulleted-list"><li style="list-style-type:disc"><strong>Backend Web :</strong> PHP natif, TCPDF pour la génération PDF</li></ul><ul id="2115a18d-dec9-80b6-98ed-e9785db44f63" class="bulleted-list"><li style="list-style-type:disc"><strong>Base de données :</strong> MySQL</li></ul><ul id="2115a18d-dec9-80d8-bad0-f638fe5bb4af" class="bulleted-list"><li style="list-style-type:disc"><strong>Matériel embarqué :</strong> ESP32 WROVER + carte microSD</li></ul><ul id="2115a18d-dec9-80e6-8b76-fd1ab8b26a41" class="bulleted-list"><li style="list-style-type:disc"><strong>Firmware ESP32 :</strong> Arduino (C++) + ESPAsyncWebServer + SPI + SHA-256</li></ul><hr id="2115a18d-dec9-80e4-944e-f48ce2f31134"/><h3 id="2115a18d-dec9-80f2-a779-e7cdb5b6a269" class="">4. Problèmes rencontrés</h3><ul id="2115a18d-dec9-80eb-8617-d2bd8f1508c8" class="bulleted-list"><li style="list-style-type:disc">Difficulté initiale à structurer la base de données pour anticiper les croisements métier</li></ul><ul id="2115a18d-dec9-8062-bc4c-e5df65a16bef" class="bulleted-list"><li style="list-style-type:disc">Incompatibilités de cookies sur certains navigateurs (Firefox) → nécessitant des tests et des contournements manuels</li></ul><ul id="2115a18d-dec9-80eb-8ea7-e9ddf667c688" class="bulleted-list"><li style="list-style-type:disc">Complexité de l’upload multipart sur ESP32 → nécessité de découpage et recomposition fragmentaire</li></ul><ul id="2115a18d-dec9-8005-86a3-effababa8dde" class="bulleted-list"><li style="list-style-type:disc">Débogage des échanges API REST avec ESP32</li></ul><ul id="2115a18d-dec9-8093-994a-d3b99194c318" class="bulleted-list"><li style="list-style-type:disc">Gestion de sessions PHP et C++ de manière parallèle mais cohérente</li></ul><hr id="2115a18d-dec9-80df-8c58-e249380fb526"/><h3 id="2115a18d-dec9-8058-b31c-fc7830e1457e" class="">5. Ce que ce projet nous a apporté</h3><ul id="2115a18d-dec9-8003-8ece-d355ebdec94c" class="bulleted-list"><li style="list-style-type:disc">Vision complète d’un projet web professionnel, de la <strong>conception à la mise en ligne</strong></li></ul><ul id="2115a18d-dec9-8060-811b-ee5f678aa8ce" class="bulleted-list"><li style="list-style-type:disc">Maîtrise des outils open source, des bases de données relationnelles et des serveurs web</li></ul><ul id="2115a18d-dec9-80e4-a680-ef78941a9bbb" class="bulleted-list"><li style="list-style-type:disc">Introduction à la <strong>programmation embarquée</strong> et à ses contraintes matérielles</li></ul><ul id="2115a18d-dec9-80ad-b0c5-c10f82738000" class="bulleted-list"><li style="list-style-type:disc">Travail en équipe, avec répartition claire des rôles (frontend, backend, API, embarqué...)</li></ul><ul id="2115a18d-dec9-80e0-ab81-f97b5c855e61" class="bulleted-list"><li style="list-style-type:disc">Approche concrète des problématiques métiers rencontrées par les alternants et mise en œuvre de solutions adaptées</li></ul><p id="2115a18d-dec9-80c9-bd1c-c271f23f6e18" class="">Ce projet représente un <strong>socle solide pour aborder la suite de notre parcours professionnel</strong>, alliant rigueur technique, utilité réelle, et transversalité des compétences.</p><h2 id="2115a18d-dec9-801a-9f15-d5f078d2645f" class="">PARTIE 5 – Conclusion générale</h2><p id="2115a18d-dec9-8049-b982-e0ba7487ddde" class="">Ce projet annuel nous a permis de concevoir une <strong>solution numérique complète</strong>, ancrée dans une problématique réelle : l’accompagnement des étudiants et alternants dans la recherche d’une opportunité professionnelle dans le secteur IT.</p><p id="2115a18d-dec9-8032-8760-f60d4f06aad4" class="">En alliant un <strong>site web fonctionnel</strong>, une <strong>base de données structurée</strong> et un <strong>serveur embarqué ESP32 autonome</strong>, nous avons exploré différents aspects du développement informatique :</p><ul id="2115a18d-dec9-8039-8672-c6bfcf27f767" class="bulleted-list"><li style="list-style-type:disc"><strong>Développement web full stack</strong> (PHP, MySQL, CSS, HTML, TCPDF)</li></ul><ul id="2115a18d-dec9-8033-90dc-dd0ddbc163cb" class="bulleted-list"><li style="list-style-type:disc"><strong>Modélisation et exploitation de base de données relationnelle</strong></li></ul><ul id="2115a18d-dec9-8034-98e7-c095f41c9def" class="bulleted-list"><li style="list-style-type:disc"><strong>Programmation embarquée et communication réseau via API REST</strong></li></ul><ul id="2115a18d-dec9-80d3-b346-f5f8accd9001" class="bulleted-list"><li style="list-style-type:disc"><strong>Mise en place d’un système d’authentification sécurisé</strong>, compatible sur plusieurs environnements</li></ul><p id="2115a18d-dec9-8023-914d-ce16e77cbda2" class="">Le projet nous a confrontés à des situations concrètes : limitations techniques, débogage d’erreurs complexes, réflexion sur l’ergonomie, sécurisation des échanges, et compatibilité inter-navigateurs. Ces défis ont été autant d’opportunités d’apprentissage technique que de développement de notre autonomie et de notre capacité à travailler en équipe.</p><p id="2115a18d-dec9-80d2-b424-d2d18d60d760" class="">Il nous a également permis de nous interroger sur les besoins réels des alternants et sur les outils qui pourraient améliorer leur insertion professionnelle.</p><p id="2115a18d-dec9-80af-9678-dc52e0578892" class="">Nous retenons de ce projet :</p><ul id="2115a18d-dec9-8047-8a2d-cb74958f479c" class="bulleted-list"><li style="list-style-type:disc">Une <strong>vision d’ensemble</strong> d’un écosystème applicatif, de la conception à la documentation</li></ul><ul id="2115a18d-dec9-8094-8d00-f70efe039e11" class="bulleted-list"><li style="list-style-type:disc">Une <strong>maîtrise approfondie des technologies modernes</strong>, tant web qu’embarquées</li></ul><ul id="2115a18d-dec9-80c2-b151-eeb8acc72d3e" class="bulleted-list"><li style="list-style-type:disc">Une <strong>capacité à structurer notre travail et à coopérer efficacement</strong></li></ul><p id="2115a18d-dec9-8090-9cad-fd9f90212572" class="">Ce projet a été une <strong>expérience riche, formatrice, et concrète</strong>, préparant chacun d’entre nous aux exigences du monde professionnel.</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

@@ -1,0 +1,764 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Documentation technique – Projet Alternance IT avec ESP32</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray {
+	color: rgba(115, 114, 110, 1);
+	fill: rgba(115, 114, 110, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(205, 60, 58, 1);
+	fill: rgba(205, 60, 58, 1);
+}
+.highlight-default_background {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.highlight-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(115, 114, 110, 1);
+	fill: rgba(115, 114, 110, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(205, 60, 58, 1);
+	fill: rgba(205, 60, 58, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.block-color-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: undefined; }
+.select-value-color-pink { background-color: rgba(225, 136, 179, 0.27); }
+.select-value-color-purple { background-color: rgba(168, 129, 197, 0.27); }
+.select-value-color-green { background-color: rgba(123, 183, 129, 0.27); }
+.select-value-color-gray { background-color: rgba(84, 72, 49, 0.15); }
+.select-value-color-translucentGray { background-color: undefined; }
+.select-value-color-orange { background-color: rgba(224, 124, 57, 0.27); }
+.select-value-color-brown { background-color: rgba(210, 162, 141, 0.35); }
+.select-value-color-red { background-color: rgba(244, 171, 159, 0.4); }
+.select-value-color-yellow { background-color: rgba(236, 191, 66, 0.39); }
+.select-value-color-blue { background-color: rgba(93, 165, 206, 0.27); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="2115a18d-dec9-8001-b71a-e9aaa4d084bc" class="page sans"><header><img class="page-cover-image" src="https://www.notion.so/images/page-cover/webb1.jpg" style="object-position:center 50%"/><h1 class="page-title"><strong>Documentation technique – Projet Alternance IT avec ESP32</strong></h1><p class="page-description"></p></header><div class="page-body"><p id="2115a18d-dec9-8008-9fd6-c50bab78a47f" class=""><strong>Version :</strong> 1.0</p><p id="2115a18d-dec9-80db-b1b3-c5b514801dc9" class=""><strong>Date :</strong> Juin 2025</p><p id="2115a18d-dec9-8063-9fc1-c3c1a4d550cd" class=""><strong>Auteurs :</strong> Adrien GUILLON, Clément BOYER, Nahel SAMSON</p><p id="2115a18d-dec9-8072-9e45-f9c5e1376c18" class=""><strong>Encadrant :</strong> Sébastien PLATTARD</p><p id="2115a18d-dec9-805d-b901-c56c2ced46e0" class=""><strong>Établissement :</strong> ESGI – 1ère année, classe 1B</p><p id="2115a18d-dec9-808f-9773-c76aae8e3681" class=""><strong>Répartition des rôles :</strong></p><ul id="2115a18d-dec9-80aa-96c8-c96ed6a3de6e" class="bulleted-list"><li style="list-style-type:disc">Adrien GUILLON : Back-end PHP &amp; base de données SQL</li></ul><ul id="2115a18d-dec9-80e4-8af3-ccd4dc653d7e" class="bulleted-list"><li style="list-style-type:disc">Clément BOYER : Développement embarqué ESP32</li></ul><ul id="2115a18d-dec9-8004-b836-c657a1f8a336" class="bulleted-list"><li style="list-style-type:disc">Nahel SAMSON : Front-end HTML/CSS &amp; UI</li></ul><hr id="2115a18d-dec9-80c1-a730-e1bd6d301c3b"/><h2 id="2115a18d-dec9-804e-a91e-c9a3bc3d1ae4" class="">Lexique &amp; Abréviations</h2><ul id="2115a18d-dec9-808c-a682-c1c6ba0912bb" class="bulleted-list"><li style="list-style-type:disc"><strong>ESP32</strong> : Microcontrôleur WiFi/Bluetooth de la société Espressif</li></ul><ul id="2115a18d-dec9-8079-a4a5-e33146c25204" class="bulleted-list"><li style="list-style-type:disc"><strong>API REST</strong> : Interface de programmation permettant des échanges de données au format JSON via HTTP</li></ul><ul id="2115a18d-dec9-8075-bcb2-c4b9085eb353" class="bulleted-list"><li style="list-style-type:disc"><strong>CRUD</strong> : Create, Read, Update, Delete – opérations de base sur une ressource</li></ul><ul id="2115a18d-dec9-80b4-a5be-cfa808f4a2f8" class="bulleted-list"><li style="list-style-type:disc"><strong>UI</strong> : User Interface (interface utilisateur)</li></ul><ul id="2115a18d-dec9-802d-a147-e3e037b94291" class="bulleted-list"><li style="list-style-type:disc"><strong>UX</strong> : User Experience (expérience utilisateur)</li></ul><ul id="2115a18d-dec9-8034-befb-fc583a66f44e" class="bulleted-list"><li style="list-style-type:disc"><strong>SHA-256</strong> : Algorithme de hachage cryptographique</li></ul><ul id="2115a18d-dec9-80bb-ba2a-f49ba77a16ee" class="bulleted-list"><li style="list-style-type:disc"><strong>PHP</strong> : Hypertext Preprocessor – langage de script côté serveur</li></ul><ul id="2115a18d-dec9-8068-b751-da1f0b288cde" class="bulleted-list"><li style="list-style-type:disc"><strong>TCPDF</strong> : Librairie PHP pour générer des fichiers PDF dynamiques</li></ul><ul id="2115a18d-dec9-8090-82f4-c97bb62ef89d" class="bulleted-list"><li style="list-style-type:disc"><strong>MVP</strong> : Minimum Viable Product – version minimale d’un produit fonctionnel</li></ul><hr id="2115a18d-dec9-8032-aed3-cb4f86f0b723"/><h2 id="2115a18d-dec9-80b6-ab68-ceb90cc1b28c" class="">1. Présentation globale</h2><p id="2115a18d-dec9-80b6-aa68-c64b817f26ae" class="">Ce projet repose sur trois piliers interconnectés :</p><ul id="2115a18d-dec9-8015-9001-e8fb8c36fcb5" class="bulleted-list"><li style="list-style-type:disc">Un <strong>site web complet en PHP/MySQL</strong> permettant à des alternants de créer leur profil, générer un CV dynamique, postuler à des offres, suivre leurs compétences.</li></ul><ul id="2115a18d-dec9-80e8-9e1e-eaf6ad466583" class="bulleted-list"><li style="list-style-type:disc">Une <strong>base de données relationnelle</strong> structurée et pensée pour l’adéquation profil/offre.</li></ul><ul id="2115a18d-dec9-8080-9734-d204e12f8281" class="bulleted-list"><li style="list-style-type:disc">Un <strong>serveur embarqué ESP32</strong> capable d’héberger une interface web locale, de gérer l’upload de fichiers via carte SD et de sécuriser l’accès avec une API REST.</li></ul><p id="2115a18d-dec9-80fa-bc74-dc4c82b19f8c" class="">Il vise à démontrer la faisabilité d’un environnement hybride, mêlant développement web classique, programmation embarquée et logique métier structurée.</p><h2 id="2115a18d-dec9-806b-b3e3-c09fda8b7bbf" class="">I. Architecture du site web (PHP/MySQL)</h2><h3 id="2115a18d-dec9-8017-8bca-d3eb7c70b44a" class="">1.1 Technologies utilisées</h3><ul id="2115a18d-dec9-8068-9c1c-c78246763b5a" class="bulleted-list"><li style="list-style-type:disc"><strong>Frontend</strong> : HTML5, CSS3, JS vanilla (responsive design)</li></ul><ul id="2115a18d-dec9-8030-8fb7-e7d9bf233b71" class="bulleted-list"><li style="list-style-type:disc"><strong>Backend</strong> : PHP 8+ (sans framework)</li></ul><ul id="2115a18d-dec9-809c-a43a-f55f3709aa33" class="bulleted-list"><li style="list-style-type:disc"><strong>Génération PDF</strong> : Librairie TCPDF</li></ul><ul id="2115a18d-dec9-808f-8fe9-f5373da8e930" class="bulleted-list"><li style="list-style-type:disc"><strong>Base de données</strong> : MySQL 5.7/8.0</li></ul><h3 id="2115a18d-dec9-80b4-9609-c209dbb0c364" class="">1.2 Organisation des fichiers</h3><ul id="2115a18d-dec9-8082-a3c9-d2d621b925b2" class="bulleted-list"><li style="list-style-type:disc"><code>index.php</code> : page d’accueil</li></ul><ul id="2115a18d-dec9-8038-b95d-c587808dd549" class="bulleted-list"><li style="list-style-type:disc"><code>login.php</code>, <code>logout.php</code>, <code>register.php</code> : authentification utilisateur avec gestion de session PHP native (via <code>$_SESSION</code>)</li></ul><ul id="2115a18d-dec9-80d1-9f34-eec7e25ddd4e" class="bulleted-list"><li style="list-style-type:disc"><code>profil.php</code> : lecture/écriture du profil utilisateur</li></ul><ul id="2115a18d-dec9-805d-9f73-c3c25ad6332f" class="bulleted-list"><li style="list-style-type:disc"><code>creer_cv.php</code> : formulaire de construction du CV</li></ul><ul id="2115a18d-dec9-8033-a368-d3c0641f8800" class="bulleted-list"><li style="list-style-type:disc"><code>generate_cv.php</code> : traitement + export PDF via TCPDF</li></ul><ul id="2115a18d-dec9-805e-9ac9-e96bd33c1b9d" class="bulleted-list"><li style="list-style-type:disc"><code>offres.php</code>, <code>annonces.php</code>, <code>postuler.php</code> : CRUD offres + interaction utilisateurs</li></ul><ul id="2115a18d-dec9-8020-b589-ce96cd8643c2" class="bulleted-list"><li style="list-style-type:disc"><code>candidatures.php</code> : affichage des candidatures</li></ul><ul id="2115a18d-dec9-8075-a6d5-cf736f756560" class="bulleted-list"><li style="list-style-type:disc"><code>competences.php</code>, <code>suivi_competences.php</code> : système de tagging/notation</li></ul><ul id="2115a18d-dec9-80bb-a049-d47835b253d0" class="bulleted-list"><li style="list-style-type:disc"><code>messages.php</code> : messagerie interne</li></ul><h3 id="2115a18d-dec9-80e8-81c9-ce2013fac510" class="">1.3 Système d&#x27;authentification</h3><ul id="2115a18d-dec9-803b-95e4-ce56c8571359" class="bulleted-list"><li style="list-style-type:disc">Stockage des mots de passe en SHA-256 ou BCRYPT (via <code>password_hash</code>)</li></ul><ul id="2115a18d-dec9-801f-89a8-c12ecc4be231" class="bulleted-list"><li style="list-style-type:disc">Sessions initiées avec <code>session_start()</code></li></ul><ul id="2115a18d-dec9-80d7-9c48-e663c6aee80b" class="bulleted-list"><li style="list-style-type:disc">Vérification de rôle (<code>$_SESSION[&#x27;role&#x27;]</code>) pour accéder aux sections (admin, recruteur, candidat)</li></ul><h3 id="2115a18d-dec9-8004-8a84-cc76189b8a1f" class="">1.4 Exemple de code PHP : Authentification</h3><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="2115a18d-dec9-80b6-a0c9-ecef67587037" class="code"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">session_start();
+include &#x27;config.php&#x27;;
+if ($_SERVER[&#x27;REQUEST_METHOD&#x27;] === &#x27;POST&#x27;) {
+  $email = $_POST[&#x27;email&#x27;];
+  $password = $_POST[&#x27;password&#x27;];
+  $stmt = $pdo-&gt;prepare(&quot;SELECT * FROM utilisateurs WHERE email = ?&quot;);
+  $stmt-&gt;execute([$email]);
+  $user = $stmt-&gt;fetch();
+  if ($user &amp;&amp; password_verify($password, $user[&#x27;mot_de_passe&#x27;])) {
+    $_SESSION[&#x27;user_id&#x27;] = $user[&#x27;id&#x27;];
+    $_SESSION[&#x27;role&#x27;] = $user[&#x27;role&#x27;];
+    header(&#x27;Location: dashboard.php&#x27;);
+  } else {
+    $error = &quot;Identifiants invalides&quot;;
+  }
+}</code></pre><h3 id="2115a18d-dec9-80b2-a043-c300d1a7ed5d" class="">1.5 Exemple HTML – Formulaire</h3><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="2115a18d-dec9-8004-86e1-dc5631c8f268" class="code"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">&lt;form method=&quot;post&quot; action=&quot;login.php&quot;&gt;
+  &lt;label&gt;Email&lt;/label&gt;
+  &lt;input type=&quot;email&quot; name=&quot;email&quot; required&gt;
+  &lt;label&gt;Mot de passe&lt;/label&gt;
+  &lt;input type=&quot;password&quot; name=&quot;password&quot; required&gt;
+  &lt;button type=&quot;submit&quot;&gt;Se connecter&lt;/button&gt;
+&lt;/form&gt;</code></pre><h3 id="2115a18d-dec9-802c-b765-e38e31d583ff" class="">1.6 CSS de base – Responsive</h3><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="2115a18d-dec9-808c-ac7c-e2569070c927" class="code"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">body {
+  font-family: &#x27;Poppins&#x27;, sans-serif;
+  background: #f7f9fb;
+  margin: 0;
+  padding: 0;
+}
+form {
+  max-width: 400px;
+  margin: auto;
+  padding: 2em;
+  background: white;
+  border-radius: 8px;
+}
+input, button {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+}</code></pre><hr id="2115a18d-dec9-8043-9e9e-e4b26d014074"/><h2 id="2115a18d-dec9-8071-8311-edd2fa791b6e" class="">II. Base de données relationnelle <code>alternance_it</code></h2><h3 id="2115a18d-dec9-802f-8ae0-f87f26e6ada5" class="">2.1 Principales entités</h3><ul id="2115a18d-dec9-80e8-aa53-dc24e36ccc3d" class="bulleted-list"><li style="list-style-type:disc"><code>utilisateurs</code> : identifiants, rôles, mot de passe hashé, email</li></ul><ul id="2115a18d-dec9-803a-a0dd-cbb95d3de33a" class="bulleted-list"><li style="list-style-type:disc"><code>profil_utilisateur</code> : données enrichies : école, ville, objectif, lien LinkedIn, portfolio</li></ul><ul id="2115a18d-dec9-802a-98cf-c9706be43992" class="bulleted-list"><li style="list-style-type:disc"><code>annonces</code> : titre, contenu, recruteur_id, date publication</li></ul><ul id="2115a18d-dec9-80ca-8a85-ec7dda3a803c" class="bulleted-list"><li style="list-style-type:disc"><code>candidatures</code> : statut, date, FK vers utilisateurs et annonces</li></ul><ul id="2115a18d-dec9-8080-90cb-d002081fe799" class="bulleted-list"><li style="list-style-type:disc"><code>competences</code> : table référentielle, catégorie incluse</li></ul><ul id="2115a18d-dec9-8016-92ef-ea20c93a9b6d" class="bulleted-list"><li style="list-style-type:disc"><code>utilisateurs_competences</code> : clé composite, niveau 1–5</li></ul><ul id="2115a18d-dec9-80f4-a3e7-faf930737739" class="bulleted-list"><li style="list-style-type:disc"><code>annonces_competences</code> : compétences exigées par offre</li></ul><ul id="2115a18d-dec9-8000-ac23-dad7a5c5c58f" class="bulleted-list"><li style="list-style-type:disc"><code>experiences_professionnelles</code> : données chronologiques pour CV</li></ul><ul id="2115a18d-dec9-80ef-b2c2-d08a7aeb50fd" class="bulleted-list"><li style="list-style-type:disc"><code>messages</code> : échanges internes entre utilisateurs</li></ul><h3 id="2115a18d-dec9-8062-97f2-cc873ce1c900" class="">2.2 Requêtes SQL utiles</h3><h3 id="2115a18d-dec9-80df-9b2d-d1848d42a3e1" class="">Création de la table utilisateurs</h3><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="2115a18d-dec9-806f-874e-c6f4bd83966b" class="code"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">CREATE TABLE utilisateurs (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  nom VARCHAR(50),
+  email VARCHAR(100) UNIQUE NOT NULL,
+  mot_de_passe VARCHAR(255) NOT NULL,
+  role ENUM(&#x27;candidat&#x27;, &#x27;recruteur&#x27;, &#x27;admin&#x27;) DEFAULT &#x27;candidat&#x27;,
+  date_creation DATETIME DEFAULT CURRENT_TIMESTAMP
+);</code></pre><h3 id="2115a18d-dec9-804e-9e55-dffd4be64563" class="">Jointure compétences ↔ offres</h3><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="2115a18d-dec9-809f-9fc8-e84d2bd3a5c6" class="code"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">SELECT DISTINCT a.*
+FROM annonces a
+JOIN annonces_competences ac ON a.id = ac.annonce_id
+JOIN utilisateurs_competences uc ON ac.competence_id = uc.competence_id
+WHERE uc.utilisateur_id = :id_utilisateur;</code></pre><h3 id="2115a18d-dec9-8028-b077-ca6c1fc996ad" class="">Historique de candidatures</h3><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="2115a18d-dec9-80b9-be60-ea6d3f1da46a" class="code"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">SELECT c.*, a.titre
+FROM candidatures c
+JOIN annonces a ON c.annonce_id = a.id
+WHERE c.utilisateur_id = ?;</code></pre><hr id="2115a18d-dec9-8057-afdf-f5259d87f94e"/><h2 id="2115a18d-dec9-8093-ae34-fb98c58e7fd0" class="">III. Serveur Web embarqué – ESP32 WROVER</h2><h3 id="2115a18d-dec9-80c6-bf06-ee6f0b0c8b7a" class="">3.1 Stack utilisée</h3><ul id="2115a18d-dec9-80cb-9fa0-e5b5bf9fd02b" class="bulleted-list"><li style="list-style-type:disc"><strong>Microcontrôleur</strong> : ESP32 WROVER (WiFi/BLE, 16 Mo flash)</li></ul><ul id="2115a18d-dec9-80ec-8aa2-c22984eeb090" class="bulleted-list"><li style="list-style-type:disc"><strong>IDE</strong> : Arduino IDE + ESP32 board support</li></ul><ul id="2115a18d-dec9-80b6-af91-eb3e21902a6d" class="bulleted-list"><li style="list-style-type:disc"><strong>Librairies principales</strong> :<ul id="2115a18d-dec9-8074-b6a3-d695758931e3" class="bulleted-list"><li style="list-style-type:circle"><code>ESPAsyncWebServer</code> : serveur HTTP non-bloquant</li></ul><ul id="2115a18d-dec9-80c8-8228-ebdd423ee350" class="bulleted-list"><li style="list-style-type:circle"><code>SPIFFS</code> / <code>SD.h</code> : gestion de fichiers via carte microSD</li></ul><ul id="2115a18d-dec9-8061-9cd6-d43f0a95d299" class="bulleted-list"><li style="list-style-type:circle"><code>Hash.h</code> : SHA-256</li></ul></li></ul><h3 id="2115a18d-dec9-8095-9f45-c8a4d784cc4d" class="">3.2 Code Arduino – Setup du serveur</h3><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="2115a18d-dec9-8063-bf14-ea0d7a1fddaf" class="code"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">#include &lt;WiFi.h&gt;
+#include &lt;ESPAsyncWebServer.h&gt;
+#include &lt;SD.h&gt;
+
+AsyncWebServer server(80);
+
+void setup() {
+  Serial.begin(115200);
+  WiFi.begin(&quot;SSID&quot;, &quot;PASSWORD&quot;);
+  while (WiFi.status() != WL_CONNECTED) delay(1000);
+  SD.begin();
+  server.on(&quot;/&quot;, HTTP_GET, [](AsyncWebServerRequest *request){
+    request-&gt;send(SD, &quot;/index.html&quot;, &quot;text/html&quot;);
+  });
+  server.begin();
+}</code></pre><h3 id="2115a18d-dec9-80af-902c-ef61da7580dd" class="">3.3 Gestion d’authentification ESP32</h3><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="2115a18d-dec9-8034-954d-c8497940e3eb" class="code"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">String hashPassword(String password) {
+  return sha256(password);
+}
+
+void handleLogin(AsyncWebServerRequest *request) {
+  if (request-&gt;hasParam(&quot;user&quot;, true) &amp;&amp; request-&gt;hasParam(&quot;pass&quot;, true)) {
+    String user = request-&gt;getParam(&quot;user&quot;, true)-&gt;value();
+    String pass = request-&gt;getParam(&quot;pass&quot;, true)-&gt;value();
+    if (user == &quot;admin&quot; &amp;&amp; hashPassword(pass) == storedHash) {
+      request-&gt;send(200, &quot;application/json&quot;, &quot;{\&quot;auth\&quot;:true}&quot;);
+    } else {
+      request-&gt;send(403);
+    }
+  }
+}</code></pre><hr id="2115a18d-dec9-8065-acc5-df95aad62f97"/><h2 id="2115a18d-dec9-807c-a01a-c45ed1a63b45" class="">IV. Sécurité et bonnes pratiques</h2><ul id="2115a18d-dec9-800d-b9bc-d171715df0c8" class="bulleted-list"><li style="list-style-type:disc">Sanitation côté PHP avec <code>htmlspecialchars</code>, <code>filter_var</code> pour les inputs</li></ul><ul id="2115a18d-dec9-805b-957d-e0f14a636663" class="bulleted-list"><li style="list-style-type:disc">Prepared statements (<code>PDO</code> ou <code>mysqli</code> avec bind_param) pour éviter les injections SQL</li></ul><ul id="2115a18d-dec9-8090-88fb-e23f77320ce1" class="bulleted-list"><li style="list-style-type:disc">Authentification sur ESP32 avec cookie unique + hash SHA-256, non exposé dans les URL</li></ul><ul id="2115a18d-dec9-8098-9452-c8e5e32eb55c" class="bulleted-list"><li style="list-style-type:disc">Aucune donnée sensible stockée sur ESP32 en clair (mot de passe ou identifiants)</li></ul><ul id="2115a18d-dec9-8004-8f83-f5dfe0caf813" class="bulleted-list"><li style="list-style-type:disc">Séparation des rôles : accès conditionné aux pages par niveau (admin, user, recruiter)</li></ul><hr id="2115a18d-dec9-80db-a60b-e296d3b76e03"/><h2 id="2115a18d-dec9-808a-933d-fa20e12394fc" class="">V. Conclusion technique</h2><p id="2115a18d-dec9-809e-9e8e-d9b3e317afd1" class="">Ce projet démontre la faisabilité d’un environnement de gestion complet :</p><ul id="2115a18d-dec9-8008-8a1f-c995ae396c28" class="bulleted-list"><li style="list-style-type:disc">100% PHP/MySQL sans framework (maîtrise native)</li></ul><ul id="2115a18d-dec9-8033-b01d-d464571ab637" class="bulleted-list"><li style="list-style-type:disc">Intégration embarquée locale via ESP32 avec API REST</li></ul><ul id="2115a18d-dec9-800d-83d9-d556e1d47552" class="bulleted-list"><li style="list-style-type:disc">Couverture complète de la logique métier : utilisateur ↔ offre ↔ compétence</li></ul><p id="2115a18d-dec9-8036-8e82-c08038375591" class="">Il constitue une base solide pour un projet de déploiement pédagogique, d’ateliers web embarqué, ou de MVP orienté alternance/emploi. Des améliorations futures incluraient :</p><ul id="2115a18d-dec9-80cf-abe0-d04d965ccb05" class="bulleted-list"><li style="list-style-type:disc">Passage à HTTPS via proxy externe (NGINX)</li></ul><ul id="2115a18d-dec9-80b4-981e-fb0c6609ba1c" class="bulleted-list"><li style="list-style-type:disc">Optimisation de la base (normalisation 3FN, triggers)</li></ul><ul id="2115a18d-dec9-8083-9b2d-ef0bcd73029c" class="bulleted-list"><li style="list-style-type:disc">Portage vers React ou Vue.js pour le frontend</li></ul><ul id="2115a18d-dec9-807a-aa90-f225c9b98fe8" class="bulleted-list"><li style="list-style-type:disc">Gestion dynamique des fichiers ESP32 via SPIFFS OTA</li></ul></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
